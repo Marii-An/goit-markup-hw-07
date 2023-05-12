@@ -38,7 +38,7 @@ button {
   cursor: pointer;
 }
 .container {
-  width: 1158px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-left: 15px;
@@ -126,11 +126,6 @@ button {
 /*====================== /COMPONENTS =========*/
 
 /*===========================Mobile*/
-.container {
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-}
 
 @media screen and (min-width: 428px) {
   .container {
@@ -168,10 +163,14 @@ body {
   top: 0;
   left: 0;
   background-color: #ffffff;
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobile-menu.is-open {
@@ -221,6 +220,10 @@ body {
   fill: #ffffff;
 }
 
+.mobile-menu-list:not(:last-child) {
+  margin-bottom: 40px;
+}
+
 .mobile-menu-link {
   font-style: normal;
   font-weight: 700;
@@ -236,16 +239,25 @@ body {
   color: #404bbf;
 }
 
-.mobile-menu-item:not(:last-child) {
+.mobile-menu-item {
   margin-bottom: 40px;
+}
+
+.contact-social-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile-menu-adress {
+  gap: 40px;
   margin-bottom: 48px;
 }
 
-.contact-list:not(:last-child) {
-  margin-bottom: 40px;
+.address-list-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  list-style: none;
 }
 
 .mobile-menu-contact-tel {
@@ -279,54 +291,19 @@ body {
 
 .mobile-menu-social-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 56px;
 }
 
-/*============= /Mobile Menu===================*/
+/*============= /Mobile Menu ===================*/
 
 /*====================== HEADER =========*/
-/*
 
 .top-line {
   background-color: #ffffff;
   border-bottom: 1px solid #e7e9fc;
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
-}
-
-.top-line-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.navigation {
-  display: flex;
-  align-items: center;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-}
-
-.menu-item:not(:last-child) {
-  margin-right: 40px;
-}
-
-.menu-link {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: var(--main-color);
-  padding-top: 24px;
-  padding-bottom: 24px;
-  display: block;
-  position: relative;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-link-active-portfolio {
@@ -384,47 +361,80 @@ body {
   color: #404bbf;
 }
 
-.contact {
-  font-style: normal;
-  margin-left: auto;
-}
-
-.address-list {
-  display: flex;
-  list-style: none;
-}
-
-.contact-item {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #434455;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.contact-item:hover,
-.contact-item:focus {
-  color: var(--accent-color);
-}
-
-.contact-space {
-  gap: 40px;
-}
-*/
-
-@media screen and (min-width: 429px) {
-  .mobile-menu-open {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 767px) {
   .menu {
     display: none;
   }
   .contact {
     display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mobile-menu-open {
+    display: none;
+  }
+  .navigation {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu-item:not(:last-child) {
+    margin-right: 40px;
+  }
+
+  .menu-link {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--main-color);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: block;
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .menu-link:hover,
+  .menu-link:focus {
+    color: var(--accent-color);
+  }
+
+  .contact {
+    font-style: normal;
+    margin-left: auto;
+  }
+
+  .address-list {
+    display: block;
+    list-style: none;
+  }
+
+  .contact-item {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #434455;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .contact-item:hover,
+  .contact-item:focus {
+    color: var(--accent-color);
+  }
+  .contact-space {
+    gap: 0px;
+  }
+
+  .logo-space {
+    margin-right: 120px;
   }
 }
 
@@ -437,7 +447,8 @@ body {
 }
 
 .mobile-menu-open {
-  padding: 0;
+  padding-top: 24px;
+  padding-bottom: 24px;
   border: none;
   background-color: transparent;
   line-height: 0;
@@ -447,9 +458,68 @@ body {
   stroke: #2e2f42;
 }
 
-.top-line {
-  padding-top: 25px;
-  padding-bottom: 24px;
+@media screen and (min-width: 1158px) {
+  .top-line-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu-item:not(:last-child) {
+    margin-right: 40px;
+  }
+
+  .menu-link {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--main-color);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: block;
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .contact {
+    font-style: normal;
+    margin-left: auto;
+  }
+
+  .address-list {
+    display: flex;
+    list-style: none;
+  }
+
+  .contact-item {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #434455;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .contact-item:hover,
+  .contact-item:focus {
+    color: var(--accent-color);
+  }
+
+  .contact-space {
+    gap: 40px;
+  }
 }
 
 /*====================== /HEADER =========*/
